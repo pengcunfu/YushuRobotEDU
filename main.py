@@ -43,11 +43,15 @@ def create_app() -> FastAPI:
             "http://127.0.0.1:3000",
             "http://localhost:5173",  # Vite开发服务器
             "http://127.0.0.1:5173",
-            "*"  # 开发阶段允许所有源
+            "http://8.153.175.16",    # 生产环境服务器IP
+            "http://8.153.175.16:80", # 生产环境前端端口
+            "*"  # 允许所有源
         ],
         allow_credentials=True,
-        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
         allow_headers=["*"],
+        expose_headers=["*"],
+        max_age=600,  # 预检请求缓存时间（秒）
     )
 
     # 注册路由器
