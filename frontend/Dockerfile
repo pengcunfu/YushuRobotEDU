@@ -4,8 +4,8 @@ FROM node:18-alpine as build
 # 设置工作目录
 WORKDIR /app
 
-# 配置npm使用USTC镜像源
-RUN npm config set registry https://mirrors.ustc.edu.cn/npm/
+# 配置npm使用阿里云镜像源
+RUN npm config set registry https://registry.npmmirror.com/
 
 # 复制package.json和package-lock.json
 COPY package*.json ./
