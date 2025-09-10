@@ -23,6 +23,8 @@ services:
       - HOST=0.0.0.0
       - PORT=8000
       - PYTHONUNBUFFERED=1
+      # 允许所有跨域请求
+      - CORS_ALLOW_ALL=true
       # 使用外部MongoDB连接
       - MONGODB_URI=${MONGODB_URI:-mongodb://localhost:27017/yushu}
     networks:

@@ -36,23 +36,40 @@ def create_app() -> FastAPI:
     )
 
     # 配置CORS中间件，支持前端跨域请求
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=[
-            "http://localhost:3000",  # React开发服务器
-            "http://127.0.0.1:3000",
-            "http://localhost:5173",  # Vite开发服务器
-            "http://127.0.0.1:5173",
-            "http://8.153.175.16",    # 生产环境服务器IP
-            "http://8.153.175.16:80", # 生产环境前端端口
-            "*"  # 允许所有源
-        ],
-        allow_credentials=True,
-        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-        allow_headers=["*"],
-        expose_headers=["*"],
-        max_age=600,  # 预检请求缓存时间（秒）
-    )
+    import os
+    cors_allow_all = os.environ.get("CORS_ALLOW_ALL", "false").lower() == "true"
+    
+    if cors_allow_all:
+        # 生产环境允许所有跨域请求
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+            expose_headers=["*"],
+            max_age=3600,
+        )
+        print("⚠️ 已启用全局CORS配置，允许所有跨域请求")
+    else:
+        # 开发环境限制跨域请求源
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=[
+                "http://localhost:3000",  # React开发服务器
+                "http://127.0.0.1:3000",
+                "http://localhost:5173",  # Vite开发服务器
+                "http://127.0.0.1:5173",
+                "http://8.153.175.16",    # 生产环境服务器IP
+                "http://8.153.175.16:80", # 生产环境前端端口
+                "*"  # 允许所有源
+            ],
+            allow_credentials=True,
+            allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+            allow_headers=["*"],
+            expose_headers=["*"],
+            max_age=600,  # 预检请求缓存时间（秒）
+        )
 
     # 注册路由器
     register_routers(app)
