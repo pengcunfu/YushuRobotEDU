@@ -8,9 +8,9 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# 配置apt使用USTC镜像源
-RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
-    sed -i 's/security.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+# 配置apt使用阿里云镜像源
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+    sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
 
 # 安装系统依赖
 RUN apt-get update \
@@ -22,9 +22,9 @@ RUN apt-get update \
 # 复制requirements文件
 COPY requirements.txt .
 
-# 配置pip使用USTC镜像源
-RUN pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple \
-    && pip config set global.trusted-host mirrors.ustc.edu.cn
+# 配置pip使用阿里云镜像源
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
+    && pip config set global.trusted-host mirrors.aliyun.com
 
 # 安装Python依赖
 RUN pip install --no-cache-dir --upgrade pip \
