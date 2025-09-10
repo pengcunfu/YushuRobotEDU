@@ -51,7 +51,7 @@ npm run dev
 yarn dev
 ```
 
-访问 http://localhost:3000
+访问 http://8.153.175.16t:3000
 
 ### 构建生产版本
 
@@ -233,7 +233,7 @@ Vite配置了API代理，开发时请求会自动转发到后端：
 server: {
   proxy: {
     '/api': {
-      target: 'http://localhost:8000',
+      target: 'http://8.153.175.16t:8000',
       changeOrigin: true,
     },
   },

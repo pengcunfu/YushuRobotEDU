@@ -62,19 +62,19 @@ export const slideService = {
 
   // 获取幻灯片图片URL
   getSlideImageUrl(filename: string): string {
-    const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
     return `${baseURL}/api/slides/images/${filename}`;
   },
 
   // 获取缩略图URL
   getThumbnailUrl(filename: string): string {
-    const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
     return `${baseURL}/api/slides/thumbnails/${filename}`;
   },
 
   // 获取文档下载URL
   getDocumentDownloadUrl(documentId: string): string {
-    const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
     return `${baseURL}/api/slides/${documentId}/download`;
   },
 
@@ -85,13 +85,13 @@ export const slideService = {
 
   // 获取指定幻灯片的图片URL
   getSlideImageUrlByIndex(documentId: string, slideIndex: number): string {
-    const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
     return `${baseURL}/api/slides/images/${documentId}_page_${slideIndex + 1}.png`;
   },
 
   // 获取指定幻灯片的缩略图URL
   getSlideThumbnailUrlByIndex(documentId: string, slideIndex: number): string {
-    const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
     return `${baseURL}/api/slides/thumbnails/${documentId}_thumb_${slideIndex + 1}.png`;
   },
 

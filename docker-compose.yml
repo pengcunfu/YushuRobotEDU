@@ -7,7 +7,7 @@ services:
     container_name: yushu-backend
     restart: unless-stopped
     ports:
-      - "8081:8000"
+      - "8080:8000"
     volumes:
       # 持久化配置文件目录
       - ./services/config-service/config:/app/services/config-service/config
@@ -36,7 +36,7 @@ services:
     container_name: yushu-frontend
     restart: unless-stopped
     ports:
-      - "8082:80"
+      - "80:80"
     volumes:
       - ./frontend/nginx/conf.d:/etc/nginx/conf.d
       - ./frontend/nginx/ssl:/etc/nginx/ssl
