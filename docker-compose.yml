@@ -27,6 +27,7 @@ services:
       - CORS_ALLOW_ALL=true
       # 使用外部MongoDB连接
       - MONGODB_URI=${MONGODB_URI:-mongodb://localhost:27017/yushu}
+    user: root
     networks:
       - yushu-network
   
@@ -44,6 +45,7 @@ services:
     #   - ./frontend/dist:/usr/share/nginx/html
     depends_on:
       - yushu-backend
+    user: root
     networks:
       - yushu-network
 

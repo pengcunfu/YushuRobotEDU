@@ -74,8 +74,9 @@ RUN echo 'server { \
     } \
 }' > /etc/nginx/conf.d/default.conf
 
-# 确保Nginx用户有权限访问目录
-RUN chmod -R 755 /usr/share/nginx/html
+# 确保目录有正确的权限，并使用root用户运行Nginx
+RUN chmod -R 755 /usr/share/nginx/html && \
+    sed -i 's/user  nginx;/#user  nginx;/g' /etc/nginx/nginx.conf
 
 # 暴露端口
 EXPOSE 80 443

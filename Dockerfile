@@ -33,10 +33,10 @@ RUN pip install --no-cache-dir --upgrade pip \
 # 复制应用代码
 COPY . .
 
-# 创建非root用户
-RUN adduser --disabled-password --gecos '' appuser \
-    && chown -R appuser:appuser /app
-USER appuser
+# 直接使用root用户运行
+# RUN adduser --disabled-password --gecos '' appuser \
+#     && chown -R appuser:appuser /app
+# USER appuser
 
 # 暴露端口
 EXPOSE 8000
