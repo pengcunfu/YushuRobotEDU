@@ -9,7 +9,7 @@ services:
     container_name: yushu-backend
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8081:8000"
     volumes:
       # 持久化配置文件目录
       - ./services/config-service/config:/app/services/config-service/config
@@ -25,9 +25,8 @@ services:
       - HOST=0.0.0.0
       - PORT=8000
       - PYTHONUNBUFFERED=1
-      - MONGODB_URI=mongodb://yushu-mongo:27017/yushu
-    depends_on:
-      - yushu-mongo
+      # 使用外部MongoDB连接
+      - MONGODB_URI=${MONGODB_URI:-mongodb://localhost:27017/yushu}
     networks:
       - yushu-network
   
@@ -39,8 +38,7 @@ services:
     container_name: yushu-frontend
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+      - "8082:80"
     volumes:
       - ./frontend/nginx/conf.d:/etc/nginx/conf.d
       - ./frontend/nginx/ssl:/etc/nginx/ssl
@@ -50,52 +48,6 @@ services:
     networks:
       - yushu-network
 
-  # MongoDB数据库
-  yushu-mongo:
-    image: mongo:6.0
-    container_name: yushu-mongo
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-      - mongo_config:/data/configdb
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME:-admin}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD:-yushurobotpassword}
-    command: ["--auth"]
-    networks:
-      - yushu-network
-
-  # MongoDB Express管理界面（可选）
-  yushu-mongo-express:
-    image: mongo-express:latest
-    container_name: yushu-mongo-express
-    restart: unless-stopped
-    ports:
-      - "8081:8081"
-    environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_ROOT_USERNAME:-admin}
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_ROOT_PASSWORD:-yushurobotpassword}
-      - ME_CONFIG_MONGODB_SERVER=yushu-mongo
-      - ME_CONFIG_BASICAUTH_USERNAME=${MONGO_EXPRESS_USERNAME:-admin}
-      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGO_EXPRESS_PASSWORD:-admin}
-    depends_on:
-      - yushu-mongo
-    networks:
-      - yushu-network
-
 networks:
   yushu-network:
     driver: bridge
-
-volumes:
-  # 配置数据
-  config_data:
-    driver: local
-  # MongoDB数据
-  mongo_data:
-    driver: local
-  # MongoDB配置
-  mongo_config:
-    driver: local
