@@ -38,7 +38,7 @@ export const ttsService = {
 
   // 流式文本转语音合成
   synthesizeTextStream: (request: TTSRequest, callback: TTSStreamCallback): EventSource => {
-    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16:8000';
     const url = `${baseURL}/api/tts/synthesize/stream`;
     
     // 创建EventSource连接
@@ -95,7 +95,7 @@ export const ttsService = {
     request: TTSRequest, 
     callback: TTSStreamCallback
   ): Promise<void> => {
-    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16:8000';
     const url = `${baseURL}/api/tts/synthesize/stream`;
     
     try {
@@ -162,7 +162,7 @@ export const ttsService = {
   // 下载合成的音频文件
   downloadAudio: (downloadUrl: string): string => {
     // 返回完整的下载URL
-    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16t:8000';
+    const baseURL = import.meta.env.VITE_API_URL || 'http://8.153.175.16:8000';
     return `${baseURL}${downloadUrl}`;
   },
 

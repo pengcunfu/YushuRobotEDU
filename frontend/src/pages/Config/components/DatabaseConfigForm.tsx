@@ -142,7 +142,7 @@ export const DatabaseConfigForm: React.FC<DatabaseConfigFormProps> = ({
             rules={[{ required: true, message: '请输入MongoDB连接URL' }]}
             tooltip="MongoDB连接字符串，格式：mongodb://host:port"
           >
-            <Input placeholder="mongodb://8.153.175.16t:27017" />
+            <Input placeholder="mongodb://8.153.175.16:27017" />
           </Form.Item>
         </Col>
         <Col span={12}>
@@ -214,7 +214,7 @@ export const DatabaseConfigForm: React.FC<DatabaseConfigFormProps> = ({
             name={['redis', 'host']}
             rules={[{ required: true, message: '请输入Redis主机地址' }]}
           >
-            <Input placeholder="8.153.175.16t" />
+            <Input placeholder="8.153.175.16" />
           </Form.Item>
         </Col>
         <Col span={12}>
@@ -274,7 +274,7 @@ export const DatabaseConfigForm: React.FC<DatabaseConfigFormProps> = ({
             name={['mysql', 'host']}
             rules={[{ required: true, message: '请输入MySQL主机地址' }]}
           >
-            <Input placeholder="8.153.175.16t" />
+            <Input placeholder="8.153.175.16" />
           </Form.Item>
         </Col>
         <Col span={12}>
@@ -346,7 +346,7 @@ export const DatabaseConfigForm: React.FC<DatabaseConfigFormProps> = ({
           name={['postgresql', 'host']}
           rules={[{ required: true, message: '请输入PostgreSQL主机地址' }]}
         >
-          <Input placeholder="8.153.175.16t" />
+          <Input placeholder="8.153.175.16" />
         </Form.Item>
       </Col>
       <Col span={12}>
