@@ -8,11 +8,9 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# 配置apt使用阿里云镜像源
-RUN echo "deb https://mirrors.aliyun.com/debian/ bullseye main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb https://mirrors.aliyun.com/debian-security bullseye-security main contrib non-free" >> /etc/apt/sources.list
+# 配置 apt 国内镜像源（中科大镜像）
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
+    sed -i 's/security.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 # 安装系统依赖
 RUN apt-get update \
@@ -24,9 +22,9 @@ RUN apt-get update \
 # 复制requirements文件
 COPY requirements.txt .
 
-# 配置pip使用阿里云镜像源
-RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
-    && pip config set global.trusted-host mirrors.aliyun.com
+# 配置 pip 国内镜像源（腾讯云镜像）
+RUN pip config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple && \
+    pip config set global.trusted-host mirrors.cloud.tencent.com
 
 # 安装Python依赖
 RUN pip install --no-cache-dir --upgrade pip \
