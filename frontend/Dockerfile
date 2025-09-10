@@ -25,8 +25,24 @@ FROM nginx:1.22-alpine
 # 复制构建产物到Nginx服务目录
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# 复制Nginx配置文件
-COPY nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+# 创建默认的Nginx配置
+RUN echo 'server { \
+    listen 80; \
+    server_name _; \
+    root /usr/share/nginx/html; \
+    index index.html; \
+    location / { \
+        try_files $uri $uri/ /index.html; \
+    } \
+    location /api/ { \
+        proxy_pass http://yushu-backend:8000; \
+        proxy_http_version 1.1; \
+        proxy_set_header Upgrade $http_upgrade; \
+        proxy_set_header Connection "upgrade"; \
+        proxy_set_header Host $host; \
+        proxy_set_header X-Real-IP $remote_addr; \
+    } \
+}' > /etc/nginx/conf.d/default.conf
 
 # 暴露端口
 EXPOSE 80 443

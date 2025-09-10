@@ -38,8 +38,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./frontend/nginx/conf.d:/etc/nginx/conf.d
-      - ./frontend/nginx/ssl:/etc/nginx/ssl
+      # - ./frontend/nginx/conf.d:/etc/nginx/conf.d  # 注释掉外部配置
+      # - ./frontend/nginx/ssl:/etc/nginx/ssl  # 注释掉SSL配置
       - ./frontend/dist:/usr/share/nginx/html
     depends_on:
       - yushu-backend
