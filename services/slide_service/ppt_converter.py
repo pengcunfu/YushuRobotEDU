@@ -35,6 +35,7 @@ class PPTConverter:
             if config_center_service:
                 config = await config_center_service.get_config("ppt_service")
                 if config:
+                    print("拿到的配置",config)
                     return config
             
             # 返回默认配置
@@ -181,10 +182,10 @@ class PPTConverter:
         try:
             # 从环境变量或配置中获取服务地址
             import os
-            base_url = os.getenv('APP_BASE_URL', 'http://localhost:8000')
+            base_url = os.getenv('APP_BASE_URL', 'http://8.149.241.205:8000')
             return f"{base_url}/api/slides/ppt-callback"
         except Exception:
-            return "http://localhost:8000/api/slides/ppt-callback"
+            return "http://8.149.241.205/api/slides/ppt-callback"
     
     async def _upload_and_convert(
         self, 
