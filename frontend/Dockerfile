@@ -29,11 +29,17 @@ COPY --from=build /app/dist /usr/share/nginx/html
 RUN echo 'server { \
     listen 80; \
     server_name _; \
+    \
     root /usr/share/nginx/html; \
     index index.html; \
+    \
+    # 确保根目录有正确的权限 \
     location / { \
         try_files $uri $uri/ /index.html; \
+        autoindex off; \
     } \
+    \
+    # API请求代理 \
     location /api/ { \
         proxy_pass http://yushu-backend:8000; \
         proxy_http_version 1.1; \
@@ -41,8 +47,12 @@ RUN echo 'server { \
         proxy_set_header Connection "upgrade"; \
         proxy_set_header Host $host; \
         proxy_set_header X-Real-IP $remote_addr; \
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; \
     } \
 }' > /etc/nginx/conf.d/default.conf
+
+# 确保Nginx用户有权限访问目录
+RUN chmod -R 755 /usr/share/nginx/html
 
 # 暴露端口
 EXPOSE 80 443
