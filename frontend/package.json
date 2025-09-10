@@ -1,0 +1,50 @@
+{
+  "name": "yushu-robot-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@tanstack/react-query": "^5.0.0",
+    "@types/react-pdf": "^6.2.0",
+    "antd": "^5.12.8",
+    "axios": "^1.6.0",
+    "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
+    "officegen": "^0.6.5",
+    "pdfjs-dist": "^5.4.149",
+    "pptx2json": "^0.0.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-image-gallery": "^1.4.0",
+    "react-office-viewer": "^1.0.4",
+    "react-pdf": "^7.7.3",
+    "react-router-dom": "^6.8.1",
+    "reveal.js": "^5.2.1",
+    "tailwindcss": "^3.3.6",
+    "zustand": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/react-image-gallery": "^1.2.4",
+    "@types/reveal.js": "^5.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.32",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
+}

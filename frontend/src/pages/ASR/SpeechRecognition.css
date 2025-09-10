@@ -1,0 +1,143 @@
+.speech-recognition-container {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.speech-recognition-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.speech-recognition-header h2 {
+  margin-bottom: 8px !important;
+  color: #1890ff;
+}
+
+.config-card {
+  height: fit-content;
+}
+
+.config-card .ant-card-body {
+  padding: 20px;
+}
+
+.empty-result {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 2px dashed #d9d9d9;
+}
+
+.empty-result p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* 上传区域样式 */
+.ant-upload-drag {
+  background: #fafafa;
+  border: 2px dashed #d9d9d9;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.ant-upload-drag:hover {
+  border-color: #1890ff;
+  background: #e6f7ff;
+}
+
+.ant-upload-drag .ant-upload-drag-icon {
+  font-size: 48px;
+  color: #1890ff;
+  margin-bottom: 16px;
+}
+
+.ant-upload-drag .ant-upload-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.ant-upload-drag .ant-upload-hint {
+  color: #999;
+  font-size: 14px;
+}
+
+/* 进度条样式 */
+.ant-progress-line {
+  margin-top: 8px;
+}
+
+.ant-progress-text {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+/* 结果文本区域 */
+.ant-input {
+  font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* 提供商选择 */
+.ant-select-selector {
+  border-radius: 6px;
+}
+
+.ant-select-selection-item {
+  display: flex;
+  align-items: center;
+}
+
+/* 标签样式 */
+.ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 卡片标题图标 */
+.ant-card-head-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .speech-recognition-container {
+    padding: 16px;
+  }
+  
+  .empty-result {
+    padding: 40px 16px;
+  }
+  
+  .ant-upload-drag {
+    padding: 24px 16px;
+  }
+}
+
+/* 深色模式支持 */
+.dark .speech-recognition-container {
+  background: #141414;
+}
+
+.dark .empty-result {
+  background: #1f1f1f;
+  border-color: #434343;
+  color: #d9d9d9;
+}
+
+.dark .ant-upload-drag {
+  background: #1f1f1f;
+  border-color: #434343;
+}
+
+.dark .ant-upload-drag:hover {
+  border-color: #1890ff;
+  background: #111b26;
+}

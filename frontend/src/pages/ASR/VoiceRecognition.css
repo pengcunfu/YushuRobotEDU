@@ -1,0 +1,335 @@
+.voice-recognition {
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 8px;
+  background: #fafafa;
+}
+
+.recognition-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+}
+
+.recording-controls {
+  text-align: center;
+  padding: 16px 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+}
+
+.record-button {
+  min-width: 100px;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 20px;
+  background: #1677ff;
+  border-color: #1677ff;
+}
+
+.record-button.recording {
+  background: #ff4d4f;
+  border-color: #ff4d4f;
+}
+
+.pause-button,
+.stop-button {
+  min-width: 80px;
+  height: 36px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.recording-status {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.recording-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ff4d4f;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.empty-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  opacity: 0.5;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.result-header .ant-typography {
+  flex: 1;
+  margin-bottom: 6px;
+}
+
+.result-meta {
+  margin-top: 6px;
+}
+
+/* 提供商卡片样式 */
+.provider-status-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 8px;
+}
+
+.provider-status-card .ant-card-body {
+  padding: 8px 12px !important;
+}
+
+.settings-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 8px;
+}
+
+.settings-card .ant-card-body {
+  padding: 12px !important;
+}
+
+.results-container {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.results-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+/* 上传区域样式 */
+.upload-container {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  padding: 12px;
+}
+
+.ant-upload-drag {
+  background-color: #fafafa !important;
+  border: 2px dashed #d9d9d9 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  padding: 16px !important;
+}
+
+.ant-upload-drag:hover {
+  border-color: #1677ff !important;
+  background-color: #f0f8ff !important;
+}
+
+.ant-upload-drag.ant-upload-drag-hover {
+  border-color: #1677ff !important;
+  background-color: #f0f8ff !important;
+}
+
+.ant-upload-drag-icon {
+  color: #1677ff !important;
+  font-size: 36px !important;
+}
+
+.ant-upload-text {
+  color: #666 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.ant-upload-hint {
+  color: #999 !important;
+  font-size: 12px !important;
+}
+
+/* 按钮样式优化 */
+.header-button-group .ant-btn {
+  border-radius: 6px;
+  font-size: 13px;
+  height: 32px;
+  padding: 0 12px;
+}
+
+.provider-tag {
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 2px 8px;
+  margin: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.provider-tag:hover {
+  transform: translateY(-1px);
+}
+
+.provider-tag.active {
+  background: #1677ff;
+  color: white;
+  border-color: #1677ff;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .voice-recognition {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .recognition-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    padding: 6px 8px;
+  }
+  
+  .result-header {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .recording-controls {
+    padding: 12px 8px;
+  }
+  
+  .record-button {
+    width: 100%;
+    max-width: 160px;
+  }
+}
+
+/* 列表项动画 */
+.ant-list-item {
+  animation: slideIn 0.3s ease-out;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  padding: 12px;
+  background: #f8f9fa;
+  border: 1px solid #e8e8e8;
+}
+
+.ant-list-item:hover {
+  background: #f0f2f5;
+  border-color: #d9d9d9;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 进度条样式 */
+.ant-progress-line {
+  margin-bottom: 6px;
+}
+
+.ant-progress-text {
+  font-size: 12px !important;
+}
+
+/* 设置面板样式 */
+.settings-item {
+  margin-bottom: 12px;
+}
+
+.settings-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #262626;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* 标签样式 */
+.ant-tag {
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 2px 6px;
+}
+
+/* 按钮组间距 */
+.ant-space-item {
+  display: flex;
+  align-items: center;
+}
+
+/* 录音时间显示 */
+.recording-time {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff4d4f;
+  margin: 8px 0;
+}
+
+/* 置信度显示 */
+.confidence-display {
+  font-size: 12px;
+  color: #666;
+}
+
+.confidence-high {
+  color: #00b96b;
+}
+
+.confidence-medium {
+  color: #faad14;
+}
+
+.confidence-low {
+  color: #ff4d4f;
+}

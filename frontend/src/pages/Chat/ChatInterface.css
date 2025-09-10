@@ -1,0 +1,383 @@
+.chat-interface {
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 8px;
+  background: #fafafa;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+}
+
+.chat-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+}
+
+.messages-container {
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.empty-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  border: 1px solid #e8e8e8;
+}
+
+.message.user .message-avatar {
+  background: #1677ff;
+  color: white;
+  border-color: #1677ff;
+}
+
+.message.assistant .message-avatar {
+  background: #00b96b;
+  color: white;
+  border-color: #00b96b;
+}
+
+.message-content {
+  max-width: 75%;
+  min-width: 180px;
+  flex: 1;
+}
+
+.message.user .message-content {
+  text-align: right;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.message.user .message-header {
+  justify-content: flex-end;
+}
+
+.user-name {
+  color: #1677ff;
+  font-size: 13px;
+}
+
+.assistant-name {
+  color: #00b96b;
+  font-size: 13px;
+}
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.message-text {
+  background: #f8f9fa;
+  padding: 10px 12px;
+  border-radius: 8px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid #e8e8e8;
+  font-size: 14px;
+  caret-color: transparent !important;
+  cursor: text;
+  outline: none !important;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.message-text:focus {
+  outline: none !important;
+  caret-color: transparent !important;
+}
+
+.message-text * {
+  caret-color: transparent !important;
+}
+
+/* 特别针对流式消息的文本框 */
+.message.assistant .message-text {
+  caret-color: transparent !important;
+}
+
+.message.assistant .message-text:focus {
+  outline: none !important;
+  caret-color: transparent !important;
+}
+
+/* 强制所有消息文本区域不显示光标 */
+.message-text,
+.message-text:focus,
+.message-text:active,
+.message-text:hover {
+  caret-color: transparent !important;
+  outline: none !important;
+  border: 1px solid #e8e8e8;
+}
+
+.message-text[contenteditable="false"] {
+  caret-color: transparent !important;
+  cursor: text;
+}
+
+/* 确保流式消息中的所有元素都不显示光标 */
+.message.assistant .message-text *,
+.message.assistant .message-text *:focus,
+.message.assistant .message-text *:active {
+  caret-color: transparent !important;
+  outline: none !important;
+}
+
+.message.user .message-text {
+  background: #e6f4ff;
+  border-color: #b7dcfa;
+  color: #1677ff;
+}
+
+.message.assistant .message-text {
+  background: #f0f9f4;
+  border-color: #b7eb8f;
+  color: #262626;
+}
+
+.chat-input {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+}
+
+.chat-input .ant-card-body {
+  padding: 8px 12px !important;
+}
+
+/* 提供商卡片样式 */
+.provider-status-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 8px;
+}
+
+.provider-status-card .ant-card-body {
+  padding: 8px 12px !important;
+}
+
+.settings-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 8px;
+}
+
+.settings-card .ant-card-body {
+  padding: 12px !important;
+}
+
+.settings-item {
+  margin-bottom: 12px;
+}
+
+.settings-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #262626;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .chat-interface {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .chat-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    padding: 6px 8px;
+  }
+  
+  .message-content {
+    max-width: 88%;
+    min-width: 140px;
+  }
+  
+  .message-header {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .message-text {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+/* 滚动条样式 */
+.messages-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 2px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 2px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #bfbfbf;
+}
+
+/* 动画效果 */
+.message {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 流式输入光标动画 */
+.streaming-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #00b96b;
+  margin-left: 3px;
+  animation: streamingBlink 1s infinite;
+  vertical-align: baseline;
+  border-radius: 1px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@keyframes streamingBlink {
+  0%, 50% {
+    opacity: 1;
+    background-color: #00b96b;
+  }
+  51%, 100% {
+    opacity: 0;
+    background-color: transparent;
+  }
+}
+
+/* 按钮样式优化 */
+.header-button-group .ant-btn {
+  border-radius: 6px;
+  font-size: 13px;
+  height: 32px;
+  padding: 0 12px;
+}
+
+.provider-tag {
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 2px 8px;
+  margin: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.provider-tag:hover {
+  transform: translateY(-1px);
+}
+
+.provider-tag.active {
+  background: #1677ff;
+  color: white;
+  border-color: #1677ff;
+}
+
+/* 输入框优化 */
+.chat-input .ant-input {
+  border: none;
+  box-shadow: none;
+  font-size: 14px;
+  caret-color: #1677ff;
+}
+
+.chat-input .ant-input:disabled {
+  cursor: not-allowed;
+  caret-color: transparent !important;
+  color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.chat-input .ant-input:disabled:focus {
+  caret-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.chat-input .ant-input:disabled::selection {
+  background: transparent !important;
+}
+
+.chat-input .ant-btn-primary {
+  background: #1677ff;
+  border-color: #1677ff;
+  border-radius: 0 6px 6px 0;
+}
