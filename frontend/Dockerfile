@@ -20,10 +20,10 @@ COPY . .
 RUN npm run build
 
 # 生产阶段
-FROM nginx:stable-alpine
+FROM nginx:1.22-alpine
 
-# 配置Alpine使用USTC镜像源
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+# 配置Alpine使用阿里云镜像源
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 # 复制构建产物到Nginx服务目录
 COPY --from=build /app/dist /usr/share/nginx/html
